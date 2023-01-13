@@ -66,6 +66,7 @@ main form input {
 main form textarea {
   resize: none;
   height: 320px;
+  padding: 0.5rem;
 }
 main form button {
   display: flex;
