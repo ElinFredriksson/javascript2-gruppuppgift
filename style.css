@@ -75,6 +75,7 @@ main form button {
   border-radius: 2rem;
   background-color: #5E9F58;
   height: 38px;
+  cursor: pointer;
   color: white;
   transition: 200ms;
 }
@@ -112,6 +113,13 @@ main .errandsList .errand:nth-of-type(2) .errandTop {
 }
 main .errandsList .errand:nth-of-type(4) .errandTop {
   background-color: #DD772D;
+}
+main .errandsList .errand button {
+  background-color: #938E83;
+  border: 0;
+  padding: 0.1rem 0.5rem;
+  color: white;
+  cursor: pointer;
 }
 
 footer {

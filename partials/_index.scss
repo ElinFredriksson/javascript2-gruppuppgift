@@ -66,6 +66,11 @@
             &:nth-of-type(4) .errandTop{
                 background-color: $orange;
             }
+
+            button {
+                @include btnDetail;
+            
+            }
         }
     }
 
