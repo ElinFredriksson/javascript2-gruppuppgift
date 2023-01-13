@@ -1,0 +1,22 @@
+@mixin flex($direction, $justify, $align) {
+    display: flex;
+    flex-direction: $direction;
+    justify-content: $justify;
+    align-items: $align;
+   
+}
+
+
+@mixin btnSubmit {
+    @include flex(row, center, center);
+    border-radius: 2rem;
+    background-color: $green;
+    height: 38px;
+
+        color: white;
+
+    transition: 200ms;
+    &:hover {
+        transform: scale(.98);
+    }
+}

@@ -1,4 +1,34 @@
-h1{
-    font-size: large;
-    color: red;
+@import "partials/variables";
+@import "partials/fonts";
+@import "partials/mixins";
+@import "partials/header";
+@import "partials/main";
+@import "partials/index";
+@import "partials/footer";
+
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
+body {
+    @include flex(column, flex-start, stretch);
+    min-height: 100vh;
+    @include fonts;
+}
+
+header {
+    @include header;
+}
+
+main {
+    @include index;
+}
+
+footer {
+    @include footer;
+}
+
+
