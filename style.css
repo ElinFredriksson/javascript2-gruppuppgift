@@ -149,6 +149,10 @@ body {
 .comment-section-wrapper .comment-section-card .comment-section-top p {
   margin: 1rem;
 }
+.comment-section-wrapper .comment-section-card .comment-email {
+  color: rgb(113, 113, 113);
+  padding: 1rem;
+}
 .comment-section-wrapper .comment-content {
   margin: 1.5rem 0.5rem;
 }
