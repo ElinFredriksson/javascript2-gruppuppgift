@@ -8,6 +8,10 @@
     background-color: white;
     flex-grow: 1;
 
+    @media (max-width: 800px) {
+        @include flex(column, flex-start, center);
+    }
+
     section {
         @include flex(column, center, center);
         flex-grow: 1;
@@ -25,7 +29,8 @@
 
         textarea {
             resize: none;
-            height: 320px
+            height: 320px;
+            padding: .5rem;
         }
 
         button {
@@ -49,7 +54,8 @@
             margin-bottom: 1rem;
             background-color: $grey;
             min-height: 80px;
-            min-width: 300px;
+            flex-grow: 1;
+            width: 350px;
 
             .errandTop {
                 height: 18px;
