@@ -1,0 +1,30 @@
+@import "mixins";
+@import "variables";
+
+
+@mixin header {
+    @include flex(row, space-between, center);
+    height: 58px;
+    background-color: $grey;
+    margin-bottom: 1rem;
+    
+
+    nav {
+        margin-inline: 1rem;
+        ul {
+            list-style: none;
+
+            li {
+                padding:1rem;
+            }
+        }
+        a {
+            color: black;
+            text-decoration: none;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+}

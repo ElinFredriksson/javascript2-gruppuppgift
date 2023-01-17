@@ -1,0 +1,9 @@
+@import "mixins";
+@import "variables";
+
+
+@mixin footer {
+    @include flex(row, space-between, center);
+    height: 58px;
+    background-color: $grey;
+}

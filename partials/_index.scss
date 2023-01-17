@@ -1,0 +1,84 @@
+@import "mixins";
+@import "variables";
+
+
+@mixin index {
+    @include flex(row, space-between, stretch);
+    
+    background-color: white;
+    flex-grow: 1;
+
+    @media (max-width: 800px) {
+        @include flex(column, flex-start, center);
+    }
+
+    section {
+        @include flex(column, center, center);
+        flex-grow: 1;
+        
+    }
+
+    form {
+        @include flex(column, center, stretch);
+        padding: 1rem;
+        
+
+        input {
+            padding: .5rem;
+        }
+
+        textarea {
+            resize: none;
+            height: 320px;
+            padding: .5rem;
+        }
+
+        button {
+            @include btnSubmit;
+        }
+
+       
+
+        > * {
+            margin-bottom: 1rem;
+            background-color: $grey;
+            border: 0px;
+            width: 350px;
+        }
+    }
+
+    .errandsList {
+        @include flex(column, center, stretch);
+        padding: 1rem;
+        .errand {
+            margin-bottom: 1rem;
+            background-color: $grey;
+            min-height: 80px;
+            flex-grow: 1;
+            width: 350px;
+
+            .errandTop {
+                height: 18px;
+                background-color: $red;
+            }
+
+            .errandBottom {
+                padding: .5rem;
+            }
+            &:nth-of-type(2) .errandTop{
+                background-color: $green;
+            }
+
+            &:nth-of-type(4) .errandTop{
+                background-color: $orange;
+            }
+
+            button {
+                @include btnDetail;
+            
+            }
+        }
+    }
+
+   
+}
