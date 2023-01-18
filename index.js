@@ -1,6 +1,6 @@
 const BASE_URL = "https://fnd22-shared.azurewebsites.net/api/Cases/"
 
-const caseList = document.querySelector('.errand')
+const errandsList = document.querySelector('.errandsList')
 
 
 // shahrriar
@@ -12,17 +12,7 @@ const getCases = async () => {
         const cases = await res.json();
         casesArray = cases;
 
-        // const subject = document.querySelector('.subject');
-        // subject.innerText = casesArray[0].subject;
-
-        // const message = document.querySelector('.message');
-        // message.innerText = casesArray[0].message;
-
-
-
-
-        // const email = document.querySelector(".email");
-        // email.innerHTML = casesArray[0].email;
+       
 
         console.log(casesArray);
     }   catch (error) {
@@ -67,34 +57,65 @@ document.querySelector('form').addEventListener('submit', (event) => {
 const listCases = () => {
 
     // const casesContainer = document.querySelector('.cases-container')    
-    caseArrays.forEach( data => {
-        const caseElement = createCaseElement(data)
-        caseList.appendChild(caseElement)
+    casesArray.forEach(data => {
+        const errand = createErrand(data)
+        errandsList.appendChild(errand)
     })
 }
 
 // // errand
-const createCaseElement = (data) => {
-
-    let createDiv = document.createElement('div');
-    createDiv.classList.add('errand');
-    createDiv.id = data.id;
-
-    let createDiv2 = document.createElement('div');
-    createDiv2.classList.add('errandBottom');
-
-    let text = document.createElement('p');
-    text.innerText = data.message;
+const createErrand = (data) => {
     
-    let button = document.createElement('button');
-    button.innerText = "details";
-    button.addEventListener('click', function(){
-        //Code to execute on click
-    });
 
-    createDiv2.appendChild(text);
-    createDiv2.appendChild(button);
-    createDiv.appendChild(createDiv2);
+    //Bygg ihop divar
+    const errand = document.createElement('div');
+    errand.classList.add('errand');
+    errand.id = data.id;
 
-    return createDiv;
+    const errandTop = document.createElement("div");
+    errandTop.classList.add("errandTop");
+
+    const errandBottom = document.createElement('div');
+    errandBottom.classList.add('errandBottom');
+    
+    const errandLeft = document.createElement("div")
+    errandLeft.classList.add("errandLeft");
+
+      //innehåll divar 
+      const subject = document.createElement("h2");
+      subject.classList.add("subject")
+      subject.innerText = casesArray[0].subject;
+      
+      const message = document.createElement('p');
+      message.classList.add("message")
+      message.innerText = casesArray[0].message;
+
+      const email = document.createElement("p");
+      email.classList.add("email");
+      email.innerHTML = casesArray[0].email;
+
+      const a = document.createElement("a");
+      a.setAttribute("href", BASE_URL + `?id=${data.id}`)
+      a.innerText = "Details";
+
+    
+        //bygg ihop arrendLeft
+        errandLeft.appendChild(subject);
+        errandLeft.appendChild(message);
+        errandLeft.appendChild(email);
+        errandLeft.appendChild(a);
+
+        //Bygg ihop errandBottom
+        errandBottom.appendChild(errandLeft);
+
+        //Bygg ihop errand
+        errand.appendChild(errandTop);
+        errand.appendChild(errandBottom);
+        
+        return errand;
 }
+
+
+
+
+
