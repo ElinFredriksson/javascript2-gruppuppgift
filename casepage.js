@@ -5,7 +5,10 @@ const caseTitle = document.querySelector('.case-title')
 const caseCard = document.querySelector('.case-card')
 const userEmail = document.querySelector('.user-email')
 const userDateStamp = document.querySelector('.user-date-stamp')
-// const commets = []
+
+const commentWrapper = document.querySelector('#comment-wrapper')
+
+const comments = []
 
 
 // const id = new URLSearchParams(window.location.search).get('id')
@@ -38,13 +41,22 @@ const createCardElement = (post) => {
 // Tömmer våran HTML
 
 // const commentList = ()=> {
-//     userList.innerHTML = " "
-//     commets.forEach(comment => {
-//     const commentElement =  createUserElement(comment) 
+//     commentWrapper.innerHTML = " "
+//     comment.forEach(comment => {
+//     const commentElement =  createCommentElement(comment) 
 //         commentList.appendChild(commentElement)
 
 
+//     })
+// }
 
+const createCommentElement = (commentData) => {
+    let comment = document.createElement('div')
+    comment.id = commentData.id
+    comment.classList.add('comment-content')
+
+    
+}
 // const newComment = {
 //     comments: document.querySelector(".comment-content").value,
 // }
@@ -69,3 +81,34 @@ const createCardElement = (post) => {
 
 //KOMMENTARER
 
+
+// JavaScript
+const form = document.querySelector('#comment-form');
+form.addEventListener('submit', submitComment);
+
+function submitComment(event) {
+  event.preventDefault();
+  
+  const commentText = document.querySelector('#comment-text').value;
+  
+  // Fetch API
+  fetch('https://fnd22-shared.azurewebsites.net/api/Cases/Comments', {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ comments: commentText })
+  })
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Failed to submit comment');
+    }
+    return response.json();
+  })
+  .then(data => {
+    console.log(data);
+  })
+  .catch(error => {
+    console.error(error);
+  });
+}

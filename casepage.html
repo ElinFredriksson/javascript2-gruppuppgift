@@ -8,7 +8,7 @@
     <title>Cases</title>
 </head>
 <body>
-
+<div class="case-container">
     <div class="case-wrapper">
         <div class="case-card">
             <div class="case-color-dot red"></div>
@@ -38,15 +38,15 @@
 
     <div class="comment-wrapper">
         <div class="comment-form">
-            <form>
+            <form id="comment-form">
                 <input type="text" id="text" placeholder="Subject"> 
                 <input type="email" id="email" placeholder="Email">
-                <textarea name="textarea" id="textarea">Write your comment here</textarea>
-                <button class="submit-comment-btn">SUBMIT</button>
+                <textarea name="textarea" id="comment-text">Write your comment here</textarea>
+                <button class="submit-comment-btn" type="submit">SUBMIT</button>
             </form>
         </div>
     </div>
-        <div class="comment-section-wrapper">
+        <div id="comment-wrapper" class="comment-section-wrapper">
             <div class="comment-section-card">
                 <div class="comment-section-top">
                     <p class="comment-subject">Subject 1</p>
@@ -58,19 +58,8 @@
                 <p class="comment-email">mail@mail.com</p>
             </div>
         </div>
-        <div class="comment-section-wrapper">
-            <div class="comment-section-card">
-                <div class="comment-section-top">
-                    <p class="comment-subject">Subject 2</p>
-                    <p class="comment-date">Created: <span class="comment-date-stamp">2023-01-13</span></p>
-                </div>
-                <div class="comment-content">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur commodi vero beatae unde provident aut ratione delectus in, laborum illo et voluptate minima earum sequi! Hic quisquam unde vel deserunt.</p>
-                </div>
-                <p class="comment-email">mail@mail.com</p>
-            </div>
-        </div>
-    
+        
+    </div>  
 
     <script src="casepage.js"></script>
 </body>
