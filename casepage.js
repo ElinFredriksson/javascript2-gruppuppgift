@@ -47,3 +47,8 @@ const createCardElement = (post) => {
 
 //KOMMENTARER
 
+const createCommentElement = (commentData) => {
+    let comment = document.createElement('div')
+    comment.id = = commentData.id
+    comment.classList.add('')
+}
