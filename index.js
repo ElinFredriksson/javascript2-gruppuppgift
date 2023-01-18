@@ -1,10 +1,10 @@
-const BASE_URL = "https://fnd22-shared.azurewebsites.net/api/Cases"
+const BASE_URL = "https://fnd22-shared.azurewebsites.net/api/Cases/"
 
 const caseList = document.querySelector('.errand')
 
 
 // shahrriar
-let caseArrays = []
+let casesArray = []
 
 const getCases = async () => {
     try {
@@ -24,7 +24,7 @@ const getCases = async () => {
         // const email = document.querySelector(".email");
         // email.innerHTML = casesArray[0].email;
 
-        console.log(caseArrays);
+        console.log(casesArray);
     }   catch (error) {
         // console.log(error)
         // console.log("Sorry, something went wrong. Please try again later.")
