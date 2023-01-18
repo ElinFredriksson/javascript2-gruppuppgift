@@ -1,4 +1,4 @@
-const BASE_URL = "https://fnd22-shared.azurewebsites.net/swagger/v1/swagger.json";
+const BASE_URL = "https://fnd22-shared.azurewebsites.net/api/Cases";
 
 
 
