@@ -134,27 +134,36 @@
     overflow: auto;
     background-color: rgba(0, 0, 0, 0.702);
     color:rgb(255, 0, 0);
+
+    .modal-content {
+        background-color: #fefefe;
+        margin: 15% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%;
+
+        .close {
+            color: #aaa;
+            float:right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s ease;
+
+            &:hover,
+            &:focus {
+                color: black;
+                cursor: pointer;
+            }
+        }
+    }            
 }
 
-.modal-content {
-    background-color: #fefefe;
-    margin: 15% auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-}
 
-.close {
-    color: #aaa;
-    float:right;
-    font-size: 28px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: 0.3s ease;
-}
 
-.close:hover,
-.close:focus {
-    color: black;
-    cursor: pointer;
-}
+
+
+
+
+
+

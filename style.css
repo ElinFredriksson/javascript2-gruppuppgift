@@ -180,16 +180,14 @@ p.email {
   background-color: rgba(0, 0, 0, 0.702);
   color: rgb(255, 0, 0);
 }
-
-.modal-content {
+#errorModal .modal-content {
   background-color: #fefefe;
   margin: 15% auto;
   padding: 20px;
   border: 1px solid #888;
   width: 80%;
 }
-
-.close {
+#errorModal .modal-content .close {
   color: #aaa;
   float: right;
   font-size: 28px;
@@ -197,9 +195,7 @@ p.email {
   cursor: pointer;
   transition: 0.3s ease;
 }
-
-.close:hover,
-.close:focus {
+#errorModal .modal-content .close:hover, #errorModal .modal-content .close:focus {
   color: black;
   cursor: pointer;
 }
