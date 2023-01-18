@@ -14,17 +14,23 @@
     height: 38px;
     cursor: pointer;
     color: white;
-
-    transition: 200ms;
+    transition: .2s;
     &:hover {
         transform: scale(.98);
     }
 }
 
 @mixin btnDetail {
-    background-color: $darkGrey;
+    display: block;
+    width: fit-content;
+    background: $darkGrey;
     border: 0;
-    padding: .1rem .5rem;
+    padding: .2rem .6rem;
     color: white;
-    cursor: pointer;
+    font-size: .875rem;
+    text-decoration: none;
+    transition: .2s;
+    &:hover {
+        transform: scale(.98);
+    }
 }
