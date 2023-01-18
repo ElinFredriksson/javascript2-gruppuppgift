@@ -1,13 +1,27 @@
-const BASE_URL = "https://fnd22-shared.azurewebsites.net/api/Cases";
+const BASE_URL = "https://fnd22-shared.azurewebsites.net/api/Cases/";
 
-
+let casesArray = [];
 
 const getCases = async () => {
     try {
         const res = await fetch (BASE_URL);
         const cases = await res.json();
+        casesArray = cases;
 
-        console.log(cases);
+        // const subject = document.querySelector('.subject');
+        // subject.innerText = casesArray[0].subject;
+
+        // const message = document.querySelector('.message');
+        // message.innerText = casesArray[0].message;
+
+
+
+
+        // const email = document.querySelector(".email");
+        // email.innerHTML = casesArray[0].email;
+
+
+
     }   catch (error) {
         // console.log(error)
         // console.log("Sorry, something went wrong. Please try again later.")
