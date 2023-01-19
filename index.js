@@ -1,18 +1,30 @@
-const BASE_URL = "https://fnd22-shared.azurewebsites.net/api/Cases";
+const BASE_URL = "https://fnd22-shared.azurewebsites.net/api/Cases/"
+
+const errandsList = document.querySelector('.errandsList')
 
 
+// shahrriar
+let casesArray = []
 
 const getCases = async () => {
     try {
         const res = await fetch (BASE_URL);
         const cases = await res.json();
+        casesArray = cases;
 
-        console.log(cases);
+       
+
+        console.log(casesArray);
     }   catch (error) {
         // console.log(error)
         // console.log("Sorry, something went wrong. Please try again later.")
         displayError(error);
     }
+
+
+    // shahriars coding
+
+    listCases();
         
 }
 
@@ -33,8 +45,6 @@ const closeModal = () => {
     const modal = document.getElementById("errorModal");
     modal.style.display = "none";
 }
-
-
 const closeBtn = document.getElementById("closeBtn");
 closeBtn.addEventListener("click", closeModal);
 
@@ -42,4 +52,70 @@ closeBtn.addEventListener("click", closeModal);
 document.querySelector('form').addEventListener('submit', (event) => {
   event.preventDefault();
 });
+
+
+const listCases = () => {
+
+    // const casesContainer = document.querySelector('.cases-container')    
+    casesArray.forEach(data => {
+        const errand = createErrand(data)
+        errandsList.appendChild(errand)
+    })
+}
+
+// // errand
+const createErrand = (data) => {
+    
+
+    //Bygg ihop divar
+    const errand = document.createElement('div');
+    errand.classList.add('errand');
+    errand.id = data.id;
+
+    const errandTop = document.createElement("div");
+    errandTop.classList.add("errandTop");
+
+    const errandBottom = document.createElement('div');
+    errandBottom.classList.add('errandBottom');
+    
+    const errandLeft = document.createElement("div")
+    errandLeft.classList.add("errandLeft");
+
+      //innehåll divar 
+      const subject = document.createElement("h2");
+      subject.classList.add("subject")
+      subject.innerText = casesArray[0].subject;
+      
+      const message = document.createElement('p');
+      message.classList.add("message")
+      message.innerText = casesArray[0].message;
+
+      const email = document.createElement("p");
+      email.classList.add("email");
+      email.innerHTML = casesArray[0].email;
+
+      const a = document.createElement("a");
+      a.setAttribute("href", BASE_URL + `?id=${data.id}`)
+      a.innerText = "Details";
+
+    
+        //bygg ihop arrendLeft
+        errandLeft.appendChild(subject);
+        errandLeft.appendChild(message);
+        errandLeft.appendChild(email);
+        errandLeft.appendChild(a);
+
+        //Bygg ihop errandBottom
+        errandBottom.appendChild(errandLeft);
+
+        //Bygg ihop errand
+        errand.appendChild(errandTop);
+        errand.appendChild(errandBottom);
+        
+        return errand;
+}
+
+
+
+
 
