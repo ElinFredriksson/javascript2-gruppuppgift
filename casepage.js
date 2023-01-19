@@ -1,5 +1,5 @@
 const BASE_URL = 'https://fnd22-shared.azurewebsites.net/api/Cases/';
-const COMMENTS_URL = 'https://fnd22-shared.azurewebsites.net/api/Comments/';
+const COMMENTS_URL = 'https://fnd22-shared.azurewebsites.net/api/Comments';
 
 
 const caseText = document.querySelector('.case-text')
@@ -75,28 +75,29 @@ getPost()
 
 
 
+form.addEventListener('submit', event => {
+    event.preventDefault();
+// const handleSubmit = e => {
+//     e.preventDefault()
 
-const handleSubmit = e => {
-e.preventDefault()
-
-   const newPost = {
+   const newComment = {
     email: document.querySelector('#email').value,
     message: document.querySelector('#comment-text').value,
-}
+    }
 
-fetch  (COMMENTS_URL,  {
-    method: 'POST', 
-    body: JSON.stringify(newPost) ,
-    headers:  {
-    'Content-type': 'application/json; charset=UTF-8',
-    },
-    
-}) 
+    fetch  (COMMENTS_URL,  {
+        method: 'POST', 
+        body: JSON.stringify(newComment) ,
+        headers:  {
+        'Content-type': 'application/json; charset=UTF-8',
+        },
+        
+    }) 
 
-.then(function(response){ 
-    return response.json()})
+    .then(function(response){ 
+        return response.json()})
     .then(function(data)
-    {console.log(data)
+        {console.log(data)
 
 
 
@@ -104,13 +105,14 @@ fetch  (COMMENTS_URL,  {
 
     comments.push(data)
  
-  console.log(newPost) 
-})
+    console.log(newComment) 
+    console.log(COMMENTS_URL);
+    });
 
  
-}
+})
 
-form.addEventListener('submit', handleSubmit)
+// form.addEventListener('submit', handleSubmit)
 
 
 //.then((response) => response.json()) 
