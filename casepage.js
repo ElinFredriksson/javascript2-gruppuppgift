@@ -1,4 +1,5 @@
 const BASE_URL = 'https://fnd22-shared.azurewebsites.net/api/Cases/';
+const COMMENTS_URL = 'https://fnd22-shared.azurewebsites.net/api/Comments/';
 
 
 const caseText = document.querySelector('.case-text')
@@ -6,7 +7,7 @@ const caseTitle = document.querySelector('.case-title')
 const caseCard = document.querySelector('.case-card')
 const userEmail = document.querySelector('.user-email')
 const userDateStamp = document.querySelector('.user-date-stamp')
-
+const form = document.querySelector('#comment-form')
 const commentContent = document.querySelector('.comment-content')
 
 const comments = []
@@ -75,3 +76,42 @@ getPost()
 
 
 
+const handleSubmit = e => {
+e.preventDefault()
+
+   const newPost = {
+    email: document.querySelector('#email').value,
+    message: document.querySelector('#comment-text').value,
+}
+
+fetch  (COMMENTS_URL,  {
+    method: 'POST', 
+    body: JSON.stringify(newPost) ,
+    headers:  {
+    'Content-type': 'application/json; charset=UTF-8',
+    },
+    
+}) 
+
+.then(function(response){ 
+    return response.json()})
+    .then(function(data)
+    {console.log(data)
+
+
+
+
+
+    comments.push(data)
+ 
+  console.log(newPost) 
+})
+
+ 
+}
+
+form.addEventListener('submit', handleSubmit)
+
+
+//.then((response) => response.json()) 
+//.then((data) => {
