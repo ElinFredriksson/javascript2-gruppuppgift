@@ -15,7 +15,7 @@ const comments = []
 // const id = new URLSearchParams(window.location.search).get('id')
 
 const getPost = async() => {
-    const res = await fetch(BASE_URL + '6871be2b-3444-43c8-a240-4a9b51052043') // + id
+    const res = await fetch(BASE_URL + '6248b324-bc30-4df0-a441-76d3400252bb') // + id
     const post = await res.json() 
      
     console.log(post);
