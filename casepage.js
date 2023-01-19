@@ -100,6 +100,3 @@ const handleSubmit = async (e) => {
 };
 
 form.addEventListener("submit", handleSubmit);
-
-//.then((response) => response.json())
-//.then((data) => {
