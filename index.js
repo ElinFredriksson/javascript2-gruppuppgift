@@ -63,7 +63,7 @@ const listCases = () => {
     })
 }
 
-// // errand
+// errand
 const createErrand = (data) => {
     
 
@@ -98,15 +98,70 @@ const createErrand = (data) => {
       a.setAttribute("href", BASE_URL + `?id=${data.id}`)
       a.innerText = "Details";
 
-    
+    const errandRight = document.createElement('div')
+    errandRight.classList.add('errandRight')
+        
+        
+        const firstParagraph = document.createElement('p')
+  
+          const iDays = document.createElement('i')
+          iDays.classList.add('fa-solid&nbsp;fa-calendar-days')
+
+  
+          const dateCreated = document.createElement('span')
+          dateCreated.classList.add('dateCreated') 
+          dateCreated.innerText = casesArray[0].created.slice(0,10)
+  
+        const secondParagraph = document.createElement('p')
+  
+          const comment = document.createElement('i')
+          comment.classList.add('fa-solid&nbsp;fa-comment')
+          comment.innerText = casesArray[0].comments
+          
+  
+          const commentsCount = document.createElement('span')
+          commentsCount.classList.add('commentsCount')
+  
+        const statusLights = document.createElement('div')
+        statusLights.classList.add('statusLights')
+  
+          const faOne = document.createElement('i')
+          faOne.classList.add('fa-solid&nbsp;fa-circle')
+  
+          const faTwo = document.createElement('i')
+          faTwo.classList.add('fa-regular&nbsp;fa-circle')
+  
+          const faThree = document.createElement('i')
+          faThree.classList.add('fa-regular&nbsp;fa-circle')
+
         //bygg ihop arrendLeft
         errandLeft.appendChild(subject);
         errandLeft.appendChild(message);
         errandLeft.appendChild(email);
         errandLeft.appendChild(a);
 
+          //bygg ihop errandRight
+
+          //firstParagraph
+          errandRight.appendChild(secondParagraph)
+          errandRight.appendChild(days)
+          errandRight.appendChild(dateCreated)
+  
+            //secondParagraph
+          errandRight.appendChild(secondParagraph)
+          errandRight.appendChild(comment)
+          errandRight.appendChild(commentsCount)
+  
+            //statusLights
+          errandRight.appendChild(statusLights)  
+          errandRight.appendChild(faOne)
+          errandRight.appendChild(faTwo)
+          errandRight.appendChild(faThree)
+  
+
         //Bygg ihop errandBottom
         errandBottom.appendChild(errandLeft);
+        errandBottom.appendChild(errandRight);
 
         //Bygg ihop errand
         errand.appendChild(errandTop);
