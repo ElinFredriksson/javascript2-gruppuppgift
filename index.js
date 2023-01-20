@@ -105,7 +105,7 @@ const createErrand = (data) => {
         const firstParagraph = document.createElement('p')
   
           const iDays = document.createElement('i')
-          iDays.classList.add('fa-solid&nbsp;fa-calendar-days')
+          iDays.className = 'fa-solid fa-calendar-days'
 
   
           const dateCreated = document.createElement('span')
@@ -115,7 +115,7 @@ const createErrand = (data) => {
         const secondParagraph = document.createElement('p')
   
           const comment = document.createElement('i')
-          comment.classList.add('fa-solid&nbsp;fa-comment')
+          comment.className = 'fa-solid fa-comment'
           comment.innerText = casesArray[0].comments
           
   
@@ -126,13 +126,13 @@ const createErrand = (data) => {
         statusLights.classList.add('statusLights')
   
           const faOne = document.createElement('i')
-          faOne.classList.add('fa-solid&nbsp;fa-circle')
+          faOne.className = 'fa-solid fa-circle'
   
           const faTwo = document.createElement('i')
-          faTwo.classList.add('fa-regular&nbsp;fa-circle')
+          faTwo.className = 'fa-regular fa-circle'
   
           const faThree = document.createElement('i')
-          faThree.classList.add('fa-regular&nbsp;fa-circle')
+          faThree.className = 'fa-regular fa-circle'
 
         //bygg ihop arrendLeft
         errandLeft.appendChild(subject);
@@ -143,20 +143,22 @@ const createErrand = (data) => {
           //bygg ihop errandRight
 
           //firstParagraph
-          errandRight.appendChild(secondParagraph)
-          errandRight.appendChild(iDays)
-          errandRight.appendChild(dateCreated)
+          
+          firstParagraph.appendChild(iDays)
+          firstParagraph.appendChild(dateCreated)
+          errandRight.appendChild(firstParagraph)
   
             //secondParagraph
-          errandRight.appendChild(secondParagraph)
-          errandRight.appendChild(comment)
-          errandRight.appendChild(commentsCount)
+            secondParagraph.appendChild(comment)
+            secondParagraph.appendChild(commentsCount)
+            errandRight.appendChild(secondParagraph)
   
             //statusLights
+          
+          statusLights.appendChild(faOne)
+          statusLights.appendChild(faTwo)
+          statusLights.appendChild(faThree)
           errandRight.appendChild(statusLights)  
-          errandRight.appendChild(faOne)
-          errandRight.appendChild(faTwo)
-          errandRight.appendChild(faThree)
   
 
         //Bygg ihop errandBottom
