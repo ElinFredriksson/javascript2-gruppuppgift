@@ -144,7 +144,7 @@ const createErrand = (data) => {
 
           //firstParagraph
           errandRight.appendChild(secondParagraph)
-          errandRight.appendChild(days)
+          errandRight.appendChild(iDays)
           errandRight.appendChild(dateCreated)
   
             //secondParagraph
