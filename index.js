@@ -105,7 +105,7 @@ const createErrand = (data) => {
         const firstParagraph = document.createElement('p')
   
           const iDays = document.createElement('i')
-          iDays.classList.add('fa-solid&nbsp;fa-calendar-days')
+          iDays.className = 'fa-solid fa-calendar-days'
 
   
           const dateCreated = document.createElement('span')
@@ -115,7 +115,7 @@ const createErrand = (data) => {
         const secondParagraph = document.createElement('p')
   
           const comment = document.createElement('i')
-          comment.classList.add('fa-solid&nbsp;fa-comment')
+          comment.className = 'fa-solid fa-comment'
           comment.innerText = casesArray[0].comments
           
   
@@ -126,13 +126,13 @@ const createErrand = (data) => {
         statusLights.classList.add('statusLights')
   
           const faOne = document.createElement('i')
-          faOne.classList.add('fa-solid&nbsp;fa-circle')
+          faOne.className = 'fa-solid fa-circle'
   
           const faTwo = document.createElement('i')
-          faTwo.classList.add('fa-regular&nbsp;fa-circle')
+          faTwo.className = 'fa-regular fa-circle'
   
           const faThree = document.createElement('i')
-          faThree.classList.add('fa-regular&nbsp;fa-circle')
+          faThree.className = 'fa-regular fa-circle'
 
         //bygg ihop arrendLeft
         errandLeft.appendChild(subject);
@@ -143,20 +143,22 @@ const createErrand = (data) => {
           //bygg ihop errandRight
 
           //firstParagraph
-          errandRight.appendChild(secondParagraph)
-          errandRight.appendChild(iDays)
-          errandRight.appendChild(dateCreated)
+          
+          firstParagraph.appendChild(iDays)
+          firstParagraph.appendChild(dateCreated)
+          errandRight.appendChild(firstParagraph)
   
             //secondParagraph
-          errandRight.appendChild(secondParagraph)
-          errandRight.appendChild(comment)
-          errandRight.appendChild(commentsCount)
+            secondParagraph.appendChild(comment)
+            secondParagraph.appendChild(commentsCount)
+            errandRight.appendChild(secondParagraph)
   
             //statusLights
+          
+          statusLights.appendChild(faOne)
+          statusLights.appendChild(faTwo)
+          statusLights.appendChild(faThree)
           errandRight.appendChild(statusLights)  
-          errandRight.appendChild(faOne)
-          errandRight.appendChild(faTwo)
-          errandRight.appendChild(faThree)
   
 
         //Bygg ihop errandBottom
@@ -171,6 +173,118 @@ const createErrand = (data) => {
 }
 
 
+//Post new message
+const messageForm = document.querySelector('#messageForm');
+
+
+//Validering
+const valEmail = (newEmail) => {
+    if(newEmail != '') {
+        return true;
+    }
+    else {
+        console.log('Add an email')
+        return false;
+    }
+}
+const valSubject = (newSubject) => {
+    if(newSubject.length > 2) {
+        return true;
+    }
+    else {
+        console.log('Subject to short!')
+        return false;
+    }
+}
+const valMessage = (newMessage) => {
+    if(newMessage.length > 10) {
+        return true;
+    }
+    else {
+        console.log('message to short!')
+        return false;
+    }
+}
+
+
+class Post {
+    constructor(newEmail, newSubject, newMessage) {
+        this.email = newEmail;
+        this.subject = newSubject;
+        this.message = newMessage;
+
+    }
+}
+
+const validateArray = [] 
+const newPost = []
+
+
+
+
+messageForm.addEventListener('submit', e => {
+    e.preventDefault();
+
+    const newEmail = document.querySelector('#newEmail').value;
+    const newSubject = document.querySelector('#newSubject').value;
+    const newMessage = document.querySelector('#newMessage').value;
+
+    validateArray[0] = valEmail(newEmail);
+    validateArray[1] = valSubject(newSubject);
+    validateArray[2] = valMessage(newMessage);
+    
+    console.log(validateArray);
+
+    if(validateArray.includes(false)) {
+        document.querySelector('.errorMessage').classList.remove('hidden')
+    }
+
+    else {
+        document.querySelector('.errorMessage').classList.add('hidden')
+        const post = new Post(newEmail, newSubject, newMessage)
+        newPost.push(post)
+        console.log(newPost)
+        //Posta meddelande
+
+    }
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// const newPost = async () => {
+
+//     const newEmail = document.querySelector('#newEmail').value;
+//     const newSubject = document.querySelector('#newSubject').value;
+//     const newMessage = document.querySelector('#newMessage').value;
+
+//     const post = new Post(newEmail, newSubject, newMessage)
+  
+//     const pushPost = await fetch(BASE_URL, {
+//       method: "POST",
+//       body: JSON.stringify(post),
+//       headers: {
+//         "Content-type": "application/json; charset=UTF-8",
+//       },
+//     });
+  
+//     if (pushPost.status === 200) {
+//       casesArray.push(post);
+//       console.log(post)
+//     } else {
+//       throw Error("Failed to post comment");
+//     }
+//   };
 
 
 
