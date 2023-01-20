@@ -36,10 +36,11 @@
         <p>Error Report</p>
 
 
-        <form>
-            <input type="text" placeholder="Email">
-            <input type="text" placeholder="Subject">
-            <textarea name="" id="" cols="30" rows="10" placeholder="Write your message here!"></textarea>
+        <form id="messageForm">
+            <input id="newEmail" type="email" placeholder="Email">
+            <input id="newSubject" type="text" placeholder="Subject">
+            <textarea name="" id="newMessage" cols="30" rows="10" placeholder="Write your message here!"></textarea>
+            <p class="errorMessage hidden">Please fill in all forms!</p>
             <button>SUBMIT</button>
         </form>
     </section>

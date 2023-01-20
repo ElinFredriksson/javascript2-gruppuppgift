@@ -116,6 +116,118 @@ const createErrand = (data) => {
 }
 
 
+//Post new message
+const messageForm = document.querySelector('#messageForm');
+
+
+//Validering
+const valEmail = (newEmail) => {
+    if(newEmail != '') {
+        return true;
+    }
+    else {
+        console.log('Add an email')
+        return false;
+    }
+}
+const valSubject = (newSubject) => {
+    if(newSubject.length > 2) {
+        return true;
+    }
+    else {
+        console.log('Subject to short!')
+        return false;
+    }
+}
+const valMessage = (newMessage) => {
+    if(newMessage.length > 10) {
+        return true;
+    }
+    else {
+        console.log('message to short!')
+        return false;
+    }
+}
+
+
+class Post {
+    constructor(newEmail, newSubject, newMessage) {
+        this.email = newEmail;
+        this.subject = newSubject;
+        this.message = newMessage;
+
+    }
+}
+
+const validateArray = [] 
+const newPost = []
+
+
+
+
+messageForm.addEventListener('submit', e => {
+    e.preventDefault();
+
+    const newEmail = document.querySelector('#newEmail').value;
+    const newSubject = document.querySelector('#newSubject').value;
+    const newMessage = document.querySelector('#newMessage').value;
+
+    validateArray[0] = valEmail(newEmail);
+    validateArray[1] = valSubject(newSubject);
+    validateArray[2] = valMessage(newMessage);
+    
+    console.log(validateArray);
+
+    if(validateArray.includes(false)) {
+        document.querySelector('.errorMessage').classList.remove('hidden')
+    }
+
+    else {
+        document.querySelector('.errorMessage').classList.add('hidden')
+        const post = new Post(newEmail, newSubject, newMessage)
+        newPost.push(post)
+        console.log(newPost)
+        //Posta meddelande
+
+    }
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// const newPost = async () => {
+
+//     const newEmail = document.querySelector('#newEmail').value;
+//     const newSubject = document.querySelector('#newSubject').value;
+//     const newMessage = document.querySelector('#newMessage').value;
+
+//     const post = new Post(newEmail, newSubject, newMessage)
+  
+//     const pushPost = await fetch(BASE_URL, {
+//       method: "POST",
+//       body: JSON.stringify(post),
+//       headers: {
+//         "Content-type": "application/json; charset=UTF-8",
+//       },
+//     });
+  
+//     if (pushPost.status === 200) {
+//       casesArray.push(post);
+//       console.log(post)
+//     } else {
+//       throw Error("Failed to post comment");
+//     }
+//   };
 
 
 

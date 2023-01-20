@@ -13,7 +13,7 @@
     }
 
     section {
-        @include flex(column, center, center);
+        @include flex(column, flex-start, center);
         flex-grow: 1;
         
     }
@@ -44,6 +44,17 @@
             background-color: $grey;
             border: 0px;
             width: 350px;
+        }
+
+        .errorMessage {
+            background-color: white;
+            color: red;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .hidden {
+            visibility: hidden;
         }
     }
 
