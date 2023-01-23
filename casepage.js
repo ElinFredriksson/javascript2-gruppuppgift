@@ -45,8 +45,8 @@ const getPost = async () => {
   console.log(post);
 
   caseTitle.innerText = post.subject;
-  caseText.innerText = post.message;
   userEmail.innerText = post.email;
+  caseText.innerText = post.message;
 
   //Gör om datumt till år, månad, dag samt tid
   const newDate = new Date(post.created);
