@@ -1,5 +1,7 @@
 const BASE_URL = "https://fnd22-shared.azurewebsites.net/api/Cases/"
 
+
+
 const errandsList = document.querySelector('.errandsList')
 
 
@@ -12,9 +14,11 @@ const getCases = async () => {
         const cases = await res.json();
         casesArray = cases;
 
-       
+        casesArray.forEach(c => {
+            console.log(c);
+        })
 
-        console.log(casesArray);
+     
     }   catch (error) {
         // console.log(error)
         // console.log("Sorry, something went wrong. Please try again later.")
@@ -23,8 +27,9 @@ const getCases = async () => {
 
 
     // shahriars coding
+    listCases()
 
-    listCases();
+    
         
 }
 
@@ -63,6 +68,7 @@ const listCases = () => {
     })
 }
 
+
 // errand
 const createErrand = (data) => {
     
@@ -71,6 +77,7 @@ const createErrand = (data) => {
     const errand = document.createElement('div');
     errand.classList.add('errand');
     errand.id = data.id;
+    console.log(errand.id)
 
     const errandTop = document.createElement("div");
     errandTop.classList.add("errandTop");
@@ -84,7 +91,7 @@ const createErrand = (data) => {
       //innehåll divar 
       const subject = document.createElement("h2");
       subject.classList.add("subject")
-      subject.innerText = casesArray[0].subject;
+      subject.innerText = data.subject;
       
       const message = document.createElement('p');
       message.classList.add("message")
@@ -95,7 +102,7 @@ const createErrand = (data) => {
       email.innerHTML = casesArray[0].email;
 
       const a = document.createElement("a");
-      a.setAttribute("href", BASE_URL + `?id=${data.id}`)
+      a.setAttribute("href", './casepage.html' + `?id=${errand.id}`)
       a.innerText = "Details";
 
     const errandRight = document.createElement('div')
