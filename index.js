@@ -14,8 +14,8 @@ const getCases = async () => {
         const cases = await res.json();
         casesArray = cases;
 
-        casesArray.forEach(c => {
-            console.log(c);
+        casesArray.forEach(cases => {
+            console.log(cases);
         })
 
      
@@ -65,12 +65,16 @@ const listCases = () => {
     casesArray.forEach(data => {
         const errand = createErrand(data)
         errandsList.appendChild(errand)
+                   
     })
+    // console.table(casesArray)
 }
+
 
 
 // errand
 const createErrand = (data) => {
+    
     
 
     //Bygg ihop divar
@@ -95,11 +99,11 @@ const createErrand = (data) => {
       
       const message = document.createElement('p');
       message.classList.add("message")
-      message.innerText = casesArray[0].message;
+      message.innerText = data.message;
 
       const email = document.createElement("p");
       email.classList.add("email");
-      email.innerHTML = casesArray[0].email;
+      email.innerHTML = data.email;
 
       const a = document.createElement("a");
       a.setAttribute("href", './casepage.html' + `?id=${errand.id}`)
@@ -117,13 +121,13 @@ const createErrand = (data) => {
   
           const dateCreated = document.createElement('span')
           dateCreated.classList.add('dateCreated') 
-          dateCreated.innerText = casesArray[0].created.slice(0,10)
+          dateCreated.innerText = data.created.slice(0,10)
   
         const secondParagraph = document.createElement('p')
   
           const comment = document.createElement('i')
           comment.className = 'fa-solid fa-comment'
-          comment.innerText = casesArray[0].comments
+          comment.innerText = data.comments.length
           
   
           const commentsCount = document.createElement('span')
