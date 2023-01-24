@@ -1,6 +1,11 @@
 const BASE_URL = "https://fnd22-shared.azurewebsites.net/api/Cases/";
 const COMMENTS_URL = "https://fnd22-shared.azurewebsites.net/api/Comments/";
 
+const id = new URLSearchParams(window.location.search).get('id')
+
+console.log(id)
+
+
 const caseText = document.querySelector(".case-text");
 const caseTitle = document.querySelector(".case-title");
 const caseCard = document.querySelector(".case-card");
@@ -39,7 +44,7 @@ const createHtmlComment = (comment) => {
 };
 
 const getPost = async () => {
-  const res = await fetch(BASE_URL + "6248b324-bc30-4df0-a441-76d3400252bb"); // + id
+  const res = await fetch(BASE_URL + id); // + id
   const post = await res.json();
 
   console.log(post);
