@@ -60,7 +60,7 @@ document.querySelector('form').addEventListener('submit', (event) => {
 
 
 const listCases = () => {
-
+    errandsList.innerText = ""
     // const casesContainer = document.querySelector('.cases-container')    
     casesArray.forEach(data => {
         const errand = createErrand(data)
