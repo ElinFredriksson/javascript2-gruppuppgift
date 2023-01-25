@@ -14,6 +14,7 @@ const userDateStamp = document.querySelector(".user-date-stamp");
 const form = document.querySelector("#comment-form");
 const commentContent = document.querySelector(".comment-content");
 
+
 const comments = [];
 
 // const id = new URLSearchParams(window.location.search).get('id')
@@ -50,8 +51,8 @@ const getPost = async () => {
   console.log(post);
 
   caseTitle.innerText = post.subject;
-  caseText.innerText = post.message;
   userEmail.innerText = post.email;
+  caseText.innerText = post.message;
 
   //Gör om datumt till år, månad, dag samt tid
   const newDate = new Date(post.created);
@@ -68,7 +69,13 @@ const getPost = async () => {
 
     // commentCard.sort(newDate);
     console.log(commentCard);
+    s_color(post.statusId);
+    let colors = document.querySelector('#colors');
+    colors.value = post.statusId;
+
     return commentCard;
+
+
   });
 };
 
@@ -78,7 +85,7 @@ const handleSubmit = async (e) => {
   e.preventDefault();
 
   const newPost = {
-    caseId: "6248b324-bc30-4df0-a441-76d3400252bb",
+    caseId: id,
     email: document.querySelector("#email").value,
     message: document.querySelector("#comment-text").value,
   };
@@ -105,3 +112,48 @@ const handleSubmit = async (e) => {
 };
 
 form.addEventListener("submit", handleSubmit);
+
+
+
+
+function s_color(statusId) {
+let container = document.querySelector('.case-color-status');
+  statusId = parseInt(statusId)
+
+  if (statusId === 1) {
+    container.style.backgroundColor = "Red";
+  }
+  else if (statusId === 2) {
+    container.style.backgroundColor = "Orange";
+  }
+  else if (statusId === 3) {
+    container.style.backgroundColor = "Green";
+  }
+
+  console.log(statusId);
+}
+
+
+
+let colors = document.querySelector('#colors');
+
+colors.addEventListener('change' , () => {
+
+  s_color(colors.value);
+
+  const statusUpdate = {
+    id: id,
+    statusId: colors.value,
+}
+
+    fetch(BASE_URL + id, {
+    method: "PUT",
+    body: JSON.stringify(statusUpdate),
+    headers: {
+      "content-type": "application/json; charset=UTF-8",
+    },
+  
+  
+  
+  }) 
+})
