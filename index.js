@@ -54,7 +54,7 @@ document.querySelector('form').addEventListener('submit', (event) => {
 
 
 const listCases = () => {
-    errandsList.innerText = ""
+    // errandsList.innerText = ""
     // const casesContainer = document.querySelector('.cases-container')    
     casesArray.forEach(data => {
         const errand = createErrand(data)
@@ -114,7 +114,10 @@ const createErrand = (data) => {
   
           const dateCreated = document.createElement('span')
           dateCreated.classList.add('dateCreated') 
-          dateCreated.innerText = data.created.slice(0,10)
+        //   dateCreated.innerText = data.created.slice(0,19)
+        dateCreated.innerText = new 
+        Date(data.created.slice(0,19)).toLocaleString()
+
   
         const secondParagraph = document.createElement('p')
   
@@ -126,17 +129,21 @@ const createErrand = (data) => {
           const commentsCount = document.createElement('span')
           commentsCount.classList.add('commentsCount')
   
-        const statusLights = document.createElement('div')
-        statusLights.classList.add('statusLights')
+          const statusId = document.createElement("div")
+          statusId.innerText = data.statusId;
+    
+
+        // const statusLights = document.createElement('div')
+        // statusLights.classList.add('statusLights')
   
-          const faOne = document.createElement('i')
-          faOne.className = 'fa-solid fa-circle'
+        //   const faOne = document.createElement('i')
+        //   faOne.className = 'fa-solid fa-circle'
   
-          const faTwo = document.createElement('i')
-          faTwo.className = 'fa-regular fa-circle'
+        //   const faTwo = document.createElement('i')
+        //   faTwo.className = 'fa-regular fa-circle'
   
-          const faThree = document.createElement('i')
-          faThree.className = 'fa-regular fa-circle'
+        //   const faThree = document.createElement('i')
+        //   faThree.className = 'fa-regular fa-circle'
 
         //bygg ihop arrendLeft
         errandLeft.appendChild(subject);
@@ -157,12 +164,18 @@ const createErrand = (data) => {
             secondParagraph.appendChild(commentsCount)
             errandRight.appendChild(secondParagraph)
   
+            //dropdown-status
+           
+
+
             //statusLights
           
-          statusLights.appendChild(faOne)
-          statusLights.appendChild(faTwo)
-          statusLights.appendChild(faThree)
-          errandRight.appendChild(statusLights)  
+        //   statusLights.appendChild(faOne)
+        //   statusLights.appendChild(faTwo)
+        //   statusLights.appendChild(faThree)
+        //   errandRight.appendChild(statusLights)  
+
+            //
   
 
         //Bygg ihop errandBottom
@@ -233,6 +246,16 @@ const handleSubmit = e => {
     else {
         document.querySelector('.errorMessage').classList.add('hidden')
 
+        const post = new Post(newEmail, newSubject, newMessage)
+        newPost.push(post)
+        console.log(newPost)
+        //Posta meddelande
+
+    }
+})
+
+
+
 
        const newErrand = {
             email: newEmail,
@@ -267,5 +290,31 @@ messageForm.addEventListener('submit', handleSubmit)
 
 
 // 
+
+
+//Funtion för att ändra statusfärg på casekortet
+const changeColor = (statusId) => {
+    const statusContainer = document.querySelector("errandTop");
+   
+    if (statusId === 1) {
+        statusContainer.style.color = "green";
+    }
+    if (statusId === 2) {
+        statusContainer.style.color = "orange";
+    }
+    if (statusId === 3) {
+        statusContainer.style.color = "red";
+    }
+    console.log(statusId)
+}
+
+const select = document.querySelector("select");
+
+select.addEventListener("change", (e) => changeColor(e.target.value));
+
+
+
+
+
 
 
