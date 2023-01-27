@@ -14,14 +14,8 @@ const getCases = async () => {
         const cases = await res.json();
         casesArray = cases;
 
-        casesArray.forEach(cases => {
-            console.log(cases);
-        })
-
      
     }   catch (error) {
-        // console.log(error)
-        // console.log("Sorry, something went wrong. Please try again later.")
         displayError(error);
     }
 
@@ -81,7 +75,6 @@ const createErrand = (data) => {
     const errand = document.createElement('div');
     errand.classList.add('errand');
     errand.id = data.id;
-    console.log(errand.id)
 
     const errandTop = document.createElement("div");
     errandTop.classList.add("errandTop");
@@ -218,33 +211,20 @@ const valMessage = (newMessage) => {
 }
 
 
-class Post {
-    constructor(newEmail, newSubject, newMessage) {
-        this.email = newEmail;
-        this.subject = newSubject;
-        this.message = newMessage;
-
-    }
-}
 
 const validateArray = [] 
-const newPost = []
 
-
-
-
-messageForm.addEventListener('submit', e => {
+const handleSubmit = e => {
     e.preventDefault();
 
     const newEmail = document.querySelector('#newEmail').value;
     const newSubject = document.querySelector('#newSubject').value;
     const newMessage = document.querySelector('#newMessage').value;
 
+
     validateArray[0] = valEmail(newEmail);
     validateArray[1] = valSubject(newSubject);
     validateArray[2] = valMessage(newMessage);
-    
-    console.log(validateArray);
 
     if(validateArray.includes(false)) {
         document.querySelector('.errorMessage').classList.remove('hidden')
@@ -252,50 +232,40 @@ messageForm.addEventListener('submit', e => {
 
     else {
         document.querySelector('.errorMessage').classList.add('hidden')
-        const post = new Post(newEmail, newSubject, newMessage)
-        newPost.push(post)
-        console.log(newPost)
-        //Posta meddelande
-
-    }
-})
 
 
+       const newErrand = {
+            email: newEmail,
+            subject: newSubject,
+            message: newMessage
+          }
+
+          console.log(newErrand)
+    
+    //HÄR SKER POSTEN,
+    fetch(BASE_URL, {
+            method: 'POST',
+            body: JSON.stringify(newErrand),
+            headers: {
+              'Content-type': 'application/json; charset=UTF-8',
+            },
+          })
+            .then((response) => response.json())
+            .then((json) => 
+            casesArray.push(json)
+            )
+            console.log(casesArray)
+          
+            messageForm.reset();
+        
+          }
+
+}
 
 
+messageForm.addEventListener('submit', handleSubmit)
 
 
-
-
-
-
-
-
-
-
-// const newPost = async () => {
-
-//     const newEmail = document.querySelector('#newEmail').value;
-//     const newSubject = document.querySelector('#newSubject').value;
-//     const newMessage = document.querySelector('#newMessage').value;
-
-//     const post = new Post(newEmail, newSubject, newMessage)
-  
-//     const pushPost = await fetch(BASE_URL, {
-//       method: "POST",
-//       body: JSON.stringify(post),
-//       headers: {
-//         "Content-type": "application/json; charset=UTF-8",
-//       },
-//     });
-  
-//     if (pushPost.status === 200) {
-//       casesArray.push(post);
-//       console.log(post)
-//     } else {
-//       throw Error("Failed to post comment");
-//     }
-//   };
-
+// 
 
 
