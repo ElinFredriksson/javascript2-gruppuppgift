@@ -60,7 +60,7 @@ document.querySelector('form').addEventListener('submit', (event) => {
 
 
 const listCases = () => {
-    errandsList.innerText = ""
+    // errandsList.innerText = ""
     // const casesContainer = document.querySelector('.cases-container')    
     casesArray.forEach(data => {
         const errand = createErrand(data)
@@ -121,7 +121,10 @@ const createErrand = (data) => {
   
           const dateCreated = document.createElement('span')
           dateCreated.classList.add('dateCreated') 
-          dateCreated.innerText = data.created.slice(0,10)
+        //   dateCreated.innerText = data.created.slice(0,19)
+        dateCreated.innerText = new 
+        Date(data.created.slice(0,19)).toLocaleString()
+
   
         const secondParagraph = document.createElement('p')
   
