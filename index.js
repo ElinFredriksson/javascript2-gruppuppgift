@@ -136,17 +136,21 @@ const createErrand = (data) => {
           const commentsCount = document.createElement('span')
           commentsCount.classList.add('commentsCount')
   
-        const statusLights = document.createElement('div')
-        statusLights.classList.add('statusLights')
+          const statusId = document.createElement("div")
+          statusId.innerText = data.statusId;
+    
+
+        // const statusLights = document.createElement('div')
+        // statusLights.classList.add('statusLights')
   
-          const faOne = document.createElement('i')
-          faOne.className = 'fa-solid fa-circle'
+        //   const faOne = document.createElement('i')
+        //   faOne.className = 'fa-solid fa-circle'
   
-          const faTwo = document.createElement('i')
-          faTwo.className = 'fa-regular fa-circle'
+        //   const faTwo = document.createElement('i')
+        //   faTwo.className = 'fa-regular fa-circle'
   
-          const faThree = document.createElement('i')
-          faThree.className = 'fa-regular fa-circle'
+        //   const faThree = document.createElement('i')
+        //   faThree.className = 'fa-regular fa-circle'
 
         //bygg ihop arrendLeft
         errandLeft.appendChild(subject);
@@ -167,12 +171,18 @@ const createErrand = (data) => {
             secondParagraph.appendChild(commentsCount)
             errandRight.appendChild(secondParagraph)
   
+            //dropdown-status
+           
+
+
             //statusLights
           
-          statusLights.appendChild(faOne)
-          statusLights.appendChild(faTwo)
-          statusLights.appendChild(faThree)
-          errandRight.appendChild(statusLights)  
+        //   statusLights.appendChild(faOne)
+        //   statusLights.appendChild(faTwo)
+        //   statusLights.appendChild(faThree)
+        //   errandRight.appendChild(statusLights)  
+
+            //
   
 
         //Bygg ihop errandBottom
@@ -264,7 +274,25 @@ messageForm.addEventListener('submit', e => {
 })
 
 
+//Funtion för att ändra statusfärg på casekortet
+const changeColor = (statusId) => {
+    const statusContainer = document.querySelector("errandTop");
+   
+    if (statusId === 1) {
+        statusContainer.style.color = "green";
+    }
+    if (statusId === 2) {
+        statusContainer.style.color = "orange";
+    }
+    if (statusId === 3) {
+        statusContainer.style.color = "red";
+    }
+    console.log(statusId)
+}
 
+const select = document.querySelector("select");
+
+select.addEventListener("change", (e) => changeColor(e.target.value));
 
 
 
