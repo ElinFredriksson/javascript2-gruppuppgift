@@ -246,15 +246,6 @@ const handleSubmit = e => {
     else {
         document.querySelector('.errorMessage').classList.add('hidden')
 
-        const post = new Post(newEmail, newSubject, newMessage)
-        newPost.push(post)
-        console.log(newPost)
-        //Posta meddelande
-
-    }
-})
-
-
 
 
        const newErrand = {
