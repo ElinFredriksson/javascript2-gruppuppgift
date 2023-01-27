@@ -6,14 +6,23 @@ const errandsList = document.querySelector('.errandsList')
 
 
 // shahrriar
-let casesArray = []
+const casesArray = []
 
 const getCases = async () => {
     try {
         const res = await fetch (BASE_URL);
         const cases = await res.json();
-        casesArray = cases;
-
+        cases.forEach(errand => {
+            casesArray.push(errand)
+        })
+      
+          casesArray.sort((a, b) => {
+            let aTime = new Date(a.created).getTime();
+            let bTime = new Date(b.created).getTime();
+            return aTime - bTime;
+        });
+        console.log(casesArray);
+        
      
     }   catch (error) {
         displayError(error);
@@ -54,7 +63,7 @@ document.querySelector('form').addEventListener('submit', (event) => {
 
 
 const listCases = () => {
-    // errandsList.innerText = ""
+    errandsList.innerText = ""
     // const casesContainer = document.querySelector('.cases-container')    
     casesArray.forEach(data => {
         const errand = createErrand(data)
@@ -78,6 +87,17 @@ const createErrand = (data) => {
 
     const errandTop = document.createElement("div");
     errandTop.classList.add("errandTop");
+
+    if (data.statusId === 1) {
+        errandTop.classList.add("bgRed")
+    }
+    else if (data.statusId === 2) {
+        errandTop.classList.add("bgOrange")
+    }
+    else if (data.statusId === 3) {
+        errandTop.classList.add("bgGreen")
+    }
+    
 
     const errandBottom = document.createElement('div');
     errandBottom.classList.add('errandBottom');
@@ -130,8 +150,10 @@ const createErrand = (data) => {
           commentsCount.classList.add('commentsCount')
   
           const statusId = document.createElement("div")
-          statusId.innerText = data.statusId;
-    
+          const pstatus = document.createElement("p")
+          pstatus.innerText = "status:" + data.status.statusName
+          console.log(data)
+
 
         // const statusLights = document.createElement('div')
         // statusLights.classList.add('statusLights')
@@ -151,6 +173,7 @@ const createErrand = (data) => {
         errandLeft.appendChild(email);
         errandLeft.appendChild(a);
 
+
           //bygg ihop errandRight
 
           //firstParagraph
@@ -164,8 +187,9 @@ const createErrand = (data) => {
             secondParagraph.appendChild(commentsCount)
             errandRight.appendChild(secondParagraph)
   
-            //dropdown-status
-           
+            //status
+            statusId.appendChild(pstatus)
+            errandRight.appendChild(statusId)
 
 
             //statusLights
@@ -246,8 +270,7 @@ const handleSubmit = e => {
     else {
         document.querySelector('.errorMessage').classList.add('hidden')
 
-
-
+   
        const newErrand = {
             email: newEmail,
             subject: newSubject,
@@ -265,43 +288,25 @@ const handleSubmit = e => {
             },
           })
             .then((response) => response.json())
-            .then((json) => 
+            .then((json) => {
             casesArray.push(json)
+            }
+            
             )
-            console.log(casesArray)
-          
+            
+            // console.log(casesArray)
+            
             messageForm.reset();
+        }
         
-          }
-
+        // getCases()
 }
 
 
 messageForm.addEventListener('submit', handleSubmit)
 
 
-// 
 
-
-//Funtion för att ändra statusfärg på casekortet
-const changeColor = (statusId) => {
-    const statusContainer = document.querySelector("errandTop");
-   
-    if (statusId === 1) {
-        statusContainer.style.color = "green";
-    }
-    if (statusId === 2) {
-        statusContainer.style.color = "orange";
-    }
-    if (statusId === 3) {
-        statusContainer.style.color = "red";
-    }
-    console.log(statusId)
-}
-
-const select = document.querySelector("select");
-
-select.addEventListener("change", (e) => changeColor(e.target.value));
 
 
 

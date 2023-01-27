@@ -118,7 +118,7 @@ form.addEventListener("submit", handleSubmit);
 
 function s_color(statusId) {
 let container = document.querySelector('.case-color-status');
-  // statusId = parseInt(statusId)
+  statusId = parseInt(statusId)
 
   if (statusId === 1) {
     container.style.backgroundColor = "Red";

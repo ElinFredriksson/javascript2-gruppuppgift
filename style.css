@@ -302,7 +302,15 @@ main .errandsList .errand {
 }
 main .errandsList .errand .errandTop {
   height: 18px;
+}
+main .errandsList .errand .bgRed {
   background-color: #ff0000;
+}
+main .errandsList .errand .bgOrange {
+  background-color: #DD772D;
+}
+main .errandsList .errand .bgGreen {
+  background-color: #5E9F58;
 }
 main .errandsList .errand .errandBottom {
   padding: 0rem 0.5rem;
@@ -346,12 +354,6 @@ main .errandsList .errand .errandBottom .statusLights i:nth-child(2) {
 }
 main .errandsList .errand .errandBottom .statusLights i:nth-child(3) {
   color: #5E9F58;
-}
-main .errandsList .errand:nth-of-type(2) .errandTop {
-  background-color: #5E9F58;
-}
-main .errandsList .errand:nth-of-type(4) .errandTop {
-  background-color: #DD772D;
 }
 main .errandsList .errand a, main .errandsList .errand button {
   display: block;
