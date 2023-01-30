@@ -1,11 +1,8 @@
 const BASE_URL = "https://fnd22-shared.azurewebsites.net/api/Cases/"
 
-
-
 const errandsList = document.querySelector('.errandsList')
 
 
-// shahrriar
 const casesArray = []
 
 const getCases = async () => {
@@ -31,12 +28,12 @@ const getCases = async () => {
 
     // shahriars coding
     listCases()
-
-    
-        
+      
 }
 
 getCases()
+
+    //ERRORMODAL
 
 const displayError = (error) => {
     // Get the modal
@@ -56,35 +53,26 @@ const closeModal = () => {
 const closeBtn = document.getElementById("closeBtn");
 closeBtn.addEventListener("click", closeModal);
 
-//Prevents the webpage from reloading (default)
-document.querySelector('form').addEventListener('submit', (event) => {
-  event.preventDefault();
-});
-
 
 const listCases = () => {
     errandsList.innerText = ""
     // const casesContainer = document.querySelector('.cases-container')    
     casesArray.forEach(data => {
         const errand = createErrand(data)
-        errandsList.appendChild(errand)
-                   
+        errandsList.appendChild(errand)            
     })
     // console.table(casesArray)
 }
 
 
-
 // errand
 const createErrand = (data) => {
     
-    
-
     //Bygg ihop divar
     const errand = document.createElement('div');
     errand.classList.add('errand');
     errand.id = data.id;
-
+    
     const errandTop = document.createElement("div");
     errandTop.classList.add("errandTop");
 
@@ -152,7 +140,7 @@ const createErrand = (data) => {
           const statusId = document.createElement("div")
           const pstatus = document.createElement("p")
           pstatus.innerText = "status:" + data.status.statusName
-          console.log(data)
+        //   console.log(data)
 
 
         // const statusLights = document.createElement('div')
@@ -201,7 +189,6 @@ const createErrand = (data) => {
 
             //
   
-
         //Bygg ihop errandBottom
         errandBottom.appendChild(errandLeft);
         errandBottom.appendChild(errandRight);
@@ -211,6 +198,7 @@ const createErrand = (data) => {
         errand.appendChild(errandBottom);
         
         return errand;
+        
 }
 
 
@@ -248,12 +236,11 @@ const valMessage = (newMessage) => {
 }
 
 
-
 const validateArray = [] 
 
 const handleSubmit = e => {
     e.preventDefault();
-
+    
     const newEmail = document.querySelector('#newEmail').value;
     const newSubject = document.querySelector('#newSubject').value;
     const newMessage = document.querySelector('#newMessage').value;
@@ -277,7 +264,7 @@ const handleSubmit = e => {
             message: newMessage
           }
 
-          console.log(newErrand)
+        //   console.log(newErrand)
     
     //HÄR SKER POSTEN,
     fetch(BASE_URL, {
@@ -294,23 +281,13 @@ const handleSubmit = e => {
             
             )
             
-            // console.log(casesArray)
+            console.log(casesArray)
             
             messageForm.reset();
         }
         
-        // getCases()
+        getCases()
 }
 
 
 messageForm.addEventListener('submit', handleSubmit)
-
-
-
-
-
-
-
-
-
-
