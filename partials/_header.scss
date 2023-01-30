@@ -2,7 +2,33 @@
 @import "variables";
 
 
-@mixin header {
+nav {
+  background-color: lightgrey;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+  
+  a {
+    margin-right: auto;
+    text-decoration: none;
+    color: black;
+    padding: 10px;
+  
+  img {
+    height: 20px;
+    object-fit: scale-down;
+
+}
+}
+}
+
+
+
+
+
+
+/*@mixin header {
     @include flex(row, space-between, center);
     height: 58px;
     background-color: $grey;
@@ -26,28 +52,4 @@
             }
         }
     }
-}
-
-/* ÄNDRA I SCSS så att detta syns för headern
-.container {
-    width: auto;
-    margin: 0 auto;
-  }
-  
-  .navbar {
-    height: 100px;
-    display: flex;
-    align-items: center;
-    background-color: rgb(182, 182, 190);
-  }
-  
-  #logo {
-    width: auto;
-    height: 300px;
-  }*/
-
-
-
-
-
-
+}*/
