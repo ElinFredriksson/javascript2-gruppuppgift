@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,66 +8,75 @@
     <link rel="stylesheet" href="style.css">
     <title>Cases</title>
 </head>
+
 <body>
 
     <header>
-        <nav>
-            <ul>
-                <li>
-                    <a href="index.html">HOME</a>
-                </li>
-            </ul>
-        </nav>
-     </header>
 
-<div class="case-container">
-    <div class="case-wrapper">
-        <div class="case-card">
-            <div class="case-color-status"></div>
-            
-            <div class="case-heading">
-                <h1 class="case-title">This Case</h1>
-            </div>
-            <p class="case-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque hic provident aspernatur, non exercitationem perferendis maiores eveniet, ratione doloremque sequi, quidem totam pariatur! Corrupti deleniti nulla ea nostrum provident porro.</p>
-        
-            <div class="case-content">
-                <div class="case-content-btns">
+        <div class="container">
+            <nav class="navbar">
+                <img id="logo" src="./images/error-service-logo.png" />
 
-                    <label for="colors">Change status: </label>
+                <ul>
+                    <li>
+                        <a href="index.html">HOME</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+    </header>
+
+    <div class="case-container">
+        <div class="case-wrapper">
+            <div class="case-card">
+                <div class="case-color-status"></div>
+
+                <div class="case-heading">
+                    <h1 class="case-title">This Case</h1>
+                </div>
+                <p class="case-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque hic provident
+                    aspernatur, non exercitationem perferendis maiores eveniet, ratione doloremque sequi, quidem totam
+                    pariatur! Corrupti deleniti nulla ea nostrum provident porro.</p>
+
+                <div class="case-content">
+                    <div class="case-content-btns">
+
+                        <label for="colors">Change status: </label>
                         <select name="status" id="colors">
                             <option value="1">Not started</option>
                             <option value="2">In progress</option>
                             <option value="3">Done</option>
                         </select>
 
-                    <!-- <button class="progress-btn">START</button>
+                        <!-- <button class="progress-btn">START</button>
                     <button class="done-btn">DONE</button> -->
-                </div>
-                <hr>
-                <div class="case-content-text">
-                    <p class="user-email">mail@email.com</p>
-                    <p class="user-date">Created: <span class="user-date-stamp">2023-01-13</span></p>
+                    </div>
+                    <hr>
+                    <div class="case-content-text">
+                        <p class="user-email">mail@email.com</p>
+                        <p class="user-date">Created: <span class="user-date-stamp">2023-01-13</span></p>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
 
 
-    
-    <div class="divider">
-        <hr>
-    </div>  
 
-    <div class="comment-wrapper">
-        <div class="comment-form">
-            <form id="comment-form">
-                <input type="email" id="email" placeholder="Email">
-                <textarea name="textarea" id="comment-text" placeholder="Write your comment here"></textarea>
-                <button class="submit-comment-btn" type="submit">SUBMIT</button>
-            </form>
+        <div class="divider">
+            <hr>
         </div>
-    </div>
+
+        <div class="comment-wrapper">
+            <div class="comment-form">
+                <form id="comment-form">
+                    <input type="email" id="email" placeholder="Email">
+                    <textarea name="textarea" id="comment-text" placeholder="Write your comment here"></textarea>
+                    <button class="submit-comment-btn" type="submit">SUBMIT</button>
+                </form>
+            </div>
+        </div>
         <div id="comment-wrapper" class="comment-section-wrapper">
             <div class="comment-section-card">
                 <div class="comment-section-top">
@@ -78,9 +88,10 @@
                 <!-- <p class="comment-email">mail@mail.com</p> -->
             </div>
         </div>
-        
-    </div>  
+
+    </div>
 
     <script src="casepage.js"></script>
 </body>
+
 </html>
