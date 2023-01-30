@@ -1,3 +1,4 @@
+@charset "UTF-8";
 * {
   margin: 0;
   padding: 0;
@@ -134,6 +135,20 @@ body {
   margin: 1.5rem 0.5rem;
 }
 
+/*Färgpalett*/
+/* SCSS HEX 
+$purple-navy: #4E4F88ff;
+$roman-silver: #878797ff;
+$black: #000000ff;
+$raisin-black: #282625ff;
+$gainsboro: #DEDEE2ff;*/
+/*Färgpalett*/
+/* SCSS HEX 
+$purple-navy: #4E4F88ff;
+$roman-silver: #878797ff;
+$black: #000000ff;
+$raisin-black: #282625ff;
+$gainsboro: #DEDEE2ff;*/
 h2 {
   font-size: 16px;
 }
@@ -146,6 +161,37 @@ p.email {
   font-size: 14px;
 }
 
+/*Färgpalett*/
+/* SCSS HEX 
+$purple-navy: #4E4F88ff;
+$roman-silver: #878797ff;
+$black: #000000ff;
+$raisin-black: #282625ff;
+$gainsboro: #DEDEE2ff;*/
+nav {
+  background-color: lightgrey;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+}
+nav a {
+  margin-right: auto;
+  text-decoration: none;
+  color: black;
+  padding: 10px;
+}
+nav a img {
+  height: 30px;
+}
+
+/*Färgpalett*/
+/* SCSS HEX 
+$purple-navy: #4E4F88ff;
+$roman-silver: #878797ff;
+$black: #000000ff;
+$raisin-black: #282625ff;
+$gainsboro: #DEDEE2ff;*/
 #errorModal {
   position: fixed;
   z-index: 1;
@@ -177,6 +223,13 @@ p.email {
   cursor: pointer;
 }
 
+/*Färgpalett*/
+/* SCSS HEX 
+$purple-navy: #4E4F88ff;
+$roman-silver: #878797ff;
+$black: #000000ff;
+$raisin-black: #282625ff;
+$gainsboro: #DEDEE2ff;*/
 * {
   margin: 0;
   padding: 0;
