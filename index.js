@@ -1,39 +1,39 @@
 const BASE_URL = "https://fnd22-shared.azurewebsites.net/api/Cases/"
 
-
-
 const errandsList = document.querySelector('.errandsList')
 
 
-// shahrriar
-let casesArray = []
+const casesArray = []
 
 const getCases = async () => {
     try {
         const res = await fetch (BASE_URL);
         const cases = await res.json();
-        casesArray = cases;
-
-        casesArray.forEach(c => {
-            console.log(c);
+        cases.forEach(errand => {
+            casesArray.push(errand)
         })
-
+      
+          casesArray.sort((a, b) => {
+            let aTime = new Date(a.created).getTime();
+            let bTime = new Date(b.created).getTime();
+            return aTime - bTime;
+        });
+        console.log(casesArray);
+        
      
     }   catch (error) {
-        // console.log(error)
-        // console.log("Sorry, something went wrong. Please try again later.")
         displayError(error);
     }
 
 
     // shahriars coding
     listCases()
-
-    
-        
+      
 }
 
 getCases()
+
+    //ERRORMODAL
 
 const displayError = (error) => {
     // Get the modal
@@ -53,34 +53,39 @@ const closeModal = () => {
 const closeBtn = document.getElementById("closeBtn");
 closeBtn.addEventListener("click", closeModal);
 
-//Prevents the webpage from reloading (default)
-document.querySelector('form').addEventListener('submit', (event) => {
-  event.preventDefault();
-});
-
 
 const listCases = () => {
-
+    errandsList.innerText = ""
     // const casesContainer = document.querySelector('.cases-container')    
     casesArray.forEach(data => {
         const errand = createErrand(data)
-        errandsList.appendChild(errand)
+        errandsList.appendChild(errand)            
     })
+    // console.table(casesArray)
 }
 
 
 // errand
 const createErrand = (data) => {
     
-
     //Bygg ihop divar
     const errand = document.createElement('div');
     errand.classList.add('errand');
     errand.id = data.id;
-    console.log(errand.id)
-
+    
     const errandTop = document.createElement("div");
     errandTop.classList.add("errandTop");
+
+    if (data.statusId === 1) {
+        errandTop.classList.add("bgRed")
+    }
+    else if (data.statusId === 2) {
+        errandTop.classList.add("bgOrange")
+    }
+    else if (data.statusId === 3) {
+        errandTop.classList.add("bgGreen")
+    }
+    
 
     const errandBottom = document.createElement('div');
     errandBottom.classList.add('errandBottom');
@@ -95,11 +100,11 @@ const createErrand = (data) => {
       
       const message = document.createElement('p');
       message.classList.add("message")
-      message.innerText = casesArray[0].message;
+      message.innerText = data.message;
 
       const email = document.createElement("p");
       email.classList.add("email");
-      email.innerHTML = casesArray[0].email;
+      email.innerHTML = data.email;
 
       const a = document.createElement("a");
       a.setAttribute("href", './casepage.html' + `?id=${errand.id}`)
@@ -117,35 +122,45 @@ const createErrand = (data) => {
   
           const dateCreated = document.createElement('span')
           dateCreated.classList.add('dateCreated') 
-          dateCreated.innerText = casesArray[0].created.slice(0,10)
+        //   dateCreated.innerText = data.created.slice(0,19)
+        dateCreated.innerText = new 
+        Date(data.created.slice(0,19)).toLocaleString()
+
   
         const secondParagraph = document.createElement('p')
   
           const comment = document.createElement('i')
           comment.className = 'fa-solid fa-comment'
-          comment.innerText = casesArray[0].comments
+          comment.innerText = data.comments.length
           
   
           const commentsCount = document.createElement('span')
           commentsCount.classList.add('commentsCount')
   
-        const statusLights = document.createElement('div')
-        statusLights.classList.add('statusLights')
+          const statusId = document.createElement("div")
+          const pstatus = document.createElement("p")
+          pstatus.innerText = "status:" + data.status.statusName
+        //   console.log(data)
+
+
+        // const statusLights = document.createElement('div')
+        // statusLights.classList.add('statusLights')
   
-          const faOne = document.createElement('i')
-          faOne.className = 'fa-solid fa-circle'
+        //   const faOne = document.createElement('i')
+        //   faOne.className = 'fa-solid fa-circle'
   
-          const faTwo = document.createElement('i')
-          faTwo.className = 'fa-regular fa-circle'
+        //   const faTwo = document.createElement('i')
+        //   faTwo.className = 'fa-regular fa-circle'
   
-          const faThree = document.createElement('i')
-          faThree.className = 'fa-regular fa-circle'
+        //   const faThree = document.createElement('i')
+        //   faThree.className = 'fa-regular fa-circle'
 
         //bygg ihop arrendLeft
         errandLeft.appendChild(subject);
         errandLeft.appendChild(message);
         errandLeft.appendChild(email);
         errandLeft.appendChild(a);
+
 
           //bygg ihop errandRight
 
@@ -160,14 +175,20 @@ const createErrand = (data) => {
             secondParagraph.appendChild(commentsCount)
             errandRight.appendChild(secondParagraph)
   
+            //status
+            statusId.appendChild(pstatus)
+            errandRight.appendChild(statusId)
+
+
             //statusLights
           
-          statusLights.appendChild(faOne)
-          statusLights.appendChild(faTwo)
-          statusLights.appendChild(faThree)
-          errandRight.appendChild(statusLights)  
-  
+        //   statusLights.appendChild(faOne)
+        //   statusLights.appendChild(faTwo)
+        //   statusLights.appendChild(faThree)
+        //   errandRight.appendChild(statusLights)  
 
+            //
+  
         //Bygg ihop errandBottom
         errandBottom.appendChild(errandLeft);
         errandBottom.appendChild(errandRight);
@@ -177,6 +198,7 @@ const createErrand = (data) => {
         errand.appendChild(errandBottom);
         
         return errand;
+        
 }
 
 
@@ -214,33 +236,19 @@ const valMessage = (newMessage) => {
 }
 
 
-class Post {
-    constructor(newEmail, newSubject, newMessage) {
-        this.email = newEmail;
-        this.subject = newSubject;
-        this.message = newMessage;
-
-    }
-}
-
 const validateArray = [] 
-const newPost = []
 
-
-
-
-messageForm.addEventListener('submit', e => {
+const handleSubmit = e => {
     e.preventDefault();
-
+    
     const newEmail = document.querySelector('#newEmail').value;
     const newSubject = document.querySelector('#newSubject').value;
     const newMessage = document.querySelector('#newMessage').value;
 
+
     validateArray[0] = valEmail(newEmail);
     validateArray[1] = valSubject(newSubject);
     validateArray[2] = valMessage(newMessage);
-    
-    console.log(validateArray);
 
     if(validateArray.includes(false)) {
         document.querySelector('.errorMessage').classList.remove('hidden')
@@ -248,50 +256,38 @@ messageForm.addEventListener('submit', e => {
 
     else {
         document.querySelector('.errorMessage').classList.add('hidden')
-        const post = new Post(newEmail, newSubject, newMessage)
-        newPost.push(post)
-        console.log(newPost)
-        //Posta meddelande
 
-    }
-})
+   
+       const newErrand = {
+            email: newEmail,
+            subject: newSubject,
+            message: newMessage
+          }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-// const newPost = async () => {
-
-//     const newEmail = document.querySelector('#newEmail').value;
-//     const newSubject = document.querySelector('#newSubject').value;
-//     const newMessage = document.querySelector('#newMessage').value;
-
-//     const post = new Post(newEmail, newSubject, newMessage)
-  
-//     const pushPost = await fetch(BASE_URL, {
-//       method: "POST",
-//       body: JSON.stringify(post),
-//       headers: {
-//         "Content-type": "application/json; charset=UTF-8",
-//       },
-//     });
-  
-//     if (pushPost.status === 200) {
-//       casesArray.push(post);
-//       console.log(post)
-//     } else {
-//       throw Error("Failed to post comment");
-//     }
-//   };
+        //   console.log(newErrand)
+    
+    //HÄR SKER POSTEN,
+    fetch(BASE_URL, {
+            method: 'POST',
+            body: JSON.stringify(newErrand),
+            headers: {
+              'Content-type': 'application/json; charset=UTF-8',
+            },
+          })
+            .then((response) => response.json())
+            .then((json) => {
+            casesArray.push(json)
+            }
+            
+            )
+            
+            console.log(casesArray)
+            
+            messageForm.reset();
+        }
+        
+        getCases()
+}
 
 
-
+messageForm.addEventListener('submit', handleSubmit)

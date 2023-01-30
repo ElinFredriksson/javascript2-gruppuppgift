@@ -70,17 +70,27 @@
 
             .errandTop {
                 height: 18px;
-                background-color: $red;
+            }
+                
+            .bgRed {
+                background-color: $red ;
+            }
+            .bgOrange {
+                background-color: $orange ;
+            }
+            .bgGreen {
+                background-color: $green ;
             }
 
             .errandBottom {
                 padding: 0rem .5rem;
+                margin-bottom: .5rem;
                 @include flex(row, space-between, stretch);
 
                 .errandLeft {
                     flex-grow: 2;
                     flex-basis: 0;
-
+                    margin-top: .5rem;
                     & > *{
                         margin-block: .5rem;
                     }
@@ -115,17 +125,8 @@
                 }
             }
 
-            &:nth-of-type(2) .errandTop{
-                background-color: $green;
-            }
-
-            &:nth-of-type(4) .errandTop{
-                background-color: $orange;
-            }
-
             a, button {
-                @include btnDetail;
-            
+                @include btnDetail;           
             }
         }
     }
