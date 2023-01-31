@@ -18,11 +18,12 @@ body {
     @include flex(column, flex-start, stretch);
     min-height: 100vh;
     @include fonts;
+
 }
 
-header {
-    @include header;
-}
+// header {
+//     @include header;
+// }
 
 main {
     @include index;
