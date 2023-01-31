@@ -183,18 +183,25 @@ nav {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 2rem;
+
+  height: 100px;
+
 }
 nav a {
   margin-right: auto;
-  text-decoration: none;
+  text-decoration: underline;
   color: black;
   padding: 10px;
 }
+nav a:hover {
+  text-decoration: underline;
+}
 nav a img {
-  height: 30%;
-  -o-object-fit: cover;
-     object-fit: cover;
+
+  height: 15px;
+  -o-object-fit: scale-down;
+     object-fit: scale-down;
+
 }
 
 /*@mixin header {
