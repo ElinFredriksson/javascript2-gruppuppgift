@@ -16,7 +16,7 @@ const getCases = async () => {
           casesArray.sort((a, b) => {
             let aTime = new Date(a.created).getTime();
             let bTime = new Date(b.created).getTime();
-            return aTime - bTime;
+            return bTime - aTime  ;
         });
         console.log(casesArray);
         
@@ -101,6 +101,7 @@ const createErrand = (data) => {
       const message = document.createElement('p');
       message.classList.add("message")
       message.innerText = data.message;
+    
 
       const email = document.createElement("p");
       email.classList.add("email");
