@@ -181,13 +181,13 @@ nav a {
   color: black;
   padding: 10px;
 }
+nav a:hover {
+  text-decoration: underline;
+}
 nav a img {
   height: 15px;
   -o-object-fit: scale-down;
      object-fit: scale-down;
-}
-nav a img:hover {
-  text-decoration: underline;
 }
 
 /*Färgpalett*/

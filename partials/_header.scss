@@ -15,18 +15,16 @@ nav {
         color: black;
         padding: 10px;
 
+        &:hover {
+            text-decoration: underline;
+        }
+
         img {
             height: 15px;
             object-fit: scale-down;
 
-            &:hover {
-                text-decoration: underline;
-            }
-        }
 
         }
+
     }
-
-
-    
-
+}
