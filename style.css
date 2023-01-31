@@ -181,54 +181,20 @@ $gainsboro: #DEDEE2ff;*/
 nav {
   background-color: lightgrey;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-
   height: 100px;
-
 }
 nav a {
-  margin-right: auto;
+  margin-left: 7rem;
   text-decoration: underline;
   color: black;
   padding: 10px;
+  text-transform: uppercase;
 }
 nav a:hover {
   text-decoration: underline;
 }
-nav a img {
-
-  height: 15px;
-  -o-object-fit: scale-down;
-     object-fit: scale-down;
-
-}
-
-/*@mixin header {
-    @include flex(row, space-between, center);
-    height: 58px;
-    background-color: $grey;
-
-
-    nav {
-        margin-inline: 1rem;
-        ul {
-            list-style: none;
-
-            li {
-                padding:1rem;
-            }
-        }
-        a {
-            color: black;
-            text-decoration: none;
-
-            &:hover {
-                text-decoration: underline;
-            }
-        }
-    }
-}*/
 /*Färgpalett*/
 /* SCSS HEX 
 $purple-navy: #4E4F88ff;
