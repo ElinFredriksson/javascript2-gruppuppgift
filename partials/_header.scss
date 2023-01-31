@@ -1,4 +1,4 @@
-@import "mixins";
+// @import "mixins";
 @import "variables";
 
 
@@ -7,7 +7,7 @@ nav {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100px;
+  height: 2rem;
   
   a {
     margin-right: auto;
@@ -16,8 +16,9 @@ nav {
     padding: 10px;
   
   img {
-    height: 20px;
-    object-fit: scale-down;
+    height: 30%;
+    object-fit: cover;
+    
 
 }
 }
