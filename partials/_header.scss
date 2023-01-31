@@ -1,8 +1,9 @@
-@import "mixins";
+// @import "mixins";
 @import "variables";
 
 
 nav {
+
     background-color: lightgrey;
     display: flex;
     justify-content: center;
@@ -19,12 +20,11 @@ nav {
             text-decoration: underline;
         }
 
-        img {
-            height: 15px;
-            object-fit: scale-down;
 
-
-        }
-
-    }
 }
+}
+}
+
+
+
+

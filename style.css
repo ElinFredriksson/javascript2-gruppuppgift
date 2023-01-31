@@ -135,6 +135,16 @@ body {
   margin: 1.5rem 0.5rem;
 }
 
+.comment-card {
+  margin: 1rem;
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid rgb(193, 191, 191);
+}
+.comment-card .comment-date-stamp {
+  padding-bottom: 1rem;
+}
+
 /*Färgpalett*/
 /* SCSS HEX 
 $purple-navy: #4E4F88ff;
@@ -173,7 +183,9 @@ nav {
   display: flex;
   justify-content: center;
   align-items: center;
+
   height: 100px;
+
 }
 nav a {
   margin-right: auto;
@@ -185,11 +197,38 @@ nav a:hover {
   text-decoration: underline;
 }
 nav a img {
+
   height: 15px;
   -o-object-fit: scale-down;
      object-fit: scale-down;
+
 }
 
+/*@mixin header {
+    @include flex(row, space-between, center);
+    height: 58px;
+    background-color: $grey;
+
+
+    nav {
+        margin-inline: 1rem;
+        ul {
+            list-style: none;
+
+            li {
+                padding:1rem;
+            }
+        }
+        a {
+            color: black;
+            text-decoration: none;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+}*/
 /*Färgpalett*/
 /* SCSS HEX 
 $purple-navy: #4E4F88ff;
