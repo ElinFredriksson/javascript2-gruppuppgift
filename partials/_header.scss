@@ -6,22 +6,26 @@ nav {
 
     background-color: lightgrey;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     height: 100px;
 
     a {
-        margin-right: auto;
+        margin-left: 7rem;
         text-decoration: underline;
         color: black;
         padding: 10px;
+        text-transform: uppercase;
+        
 
         &:hover {
             text-decoration: underline;
         }
 
-
-}
+        
+        
+    }
+    
 }
 
 
