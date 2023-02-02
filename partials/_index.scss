@@ -65,8 +65,9 @@
             margin-bottom: 1rem;
             background-color: $grey;
             min-height: 80px;
+            // max-height: 180px;
             flex-grow: 1;
-            width: 350px;
+            width: 450px;
 
             .errandTop {
                 height: 18px;
@@ -93,7 +94,6 @@
                     margin-top: .5rem;
                     margin-right: .5rem;
                     max-width: 50%;
-                    overflow: hidden;
                     
                     & > *{
                         margin-block: .5rem;
@@ -103,6 +103,7 @@
                     flex-grow: 1;
                     flex-basis: 0;
                     margin-top: 1rem;
+                    margin-left: 4rem;
                     @include flex(column, flex-end, flex-start);
                     p {
                         font-size: .875rem;

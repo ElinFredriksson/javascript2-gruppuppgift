@@ -101,11 +101,16 @@ const createErrand = (data) => {
       const message = document.createElement('p');
       message.classList.add("message")
       message.innerText = data.message;
-    
+      message.style.overflow = "auto";
+      message.style.whiteSpace = "nowrap";
+      message.style.marginRight = "20px";
 
       const email = document.createElement("p");
       email.classList.add("email");
       email.innerHTML = data.email;
+      email.style.overflow = "auto";
+      email.style.whiteSpace = "nowrap";
+      email.style.marginRight = "20px";
 
       const a = document.createElement("a");
       a.setAttribute("href", './casepage.html' + `?id=${errand.id}`)
