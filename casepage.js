@@ -109,6 +109,7 @@ const handleSubmit = async (e) => {
   } else {
     throw Error("Failed to post comment");
   }
+    form.reset();
 };
 
 form.addEventListener("submit", handleSubmit);
