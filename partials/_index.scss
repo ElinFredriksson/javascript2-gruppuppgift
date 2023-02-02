@@ -65,7 +65,6 @@
             margin-bottom: 1rem;
             background-color: $grey;
             min-height: 80px;
-            // max-height: 180px;
             flex-grow: 1;
             width: 450px;
 
@@ -137,6 +136,20 @@
     }
 
    
+}
+
+.section {
+    overflow-y: scroll;
+    height: 700px;
+}
+
+.heading {
+    display:flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    // position: absolute;
+    margin-bottom: 2rem;
+    
 }
 
 

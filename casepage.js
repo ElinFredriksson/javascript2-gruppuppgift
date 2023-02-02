@@ -17,7 +17,6 @@ const commentContent = document.querySelector(".comment-content");
 
 const comments = [];
 
-// const id = new URLSearchParams(window.location.search).get('id')
 
 const createHtmlComment = (comment) => {
   let commentCard = document.createElement("div");

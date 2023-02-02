@@ -203,6 +203,18 @@ $roman-silver: #878797ff;
 $black: #000000ff;
 $raisin-black: #282625ff;
 $gainsboro: #DEDEE2ff;*/
+.section {
+  overflow-y: scroll;
+  height: 700px;
+}
+
+.heading {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  margin-bottom: 2rem;
+}
+
 #errorModal {
   position: fixed;
   z-index: 1;
