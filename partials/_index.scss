@@ -48,7 +48,7 @@
 
         .errorMessage {
             background-color: white;
-            color: red;
+            color: rgb(0, 0, 0);
             font-weight: 600;
             text-align: center;
         }
@@ -65,8 +65,9 @@
             margin-bottom: 1rem;
             background-color: $grey;
             min-height: 80px;
+            // max-height: 180px;
             flex-grow: 1;
-            width: 350px;
+            width: 450px;
 
             .errandTop {
                 height: 18px;
@@ -91,6 +92,9 @@
                     flex-grow: 2;
                     flex-basis: 0;
                     margin-top: .5rem;
+                    margin-right: .5rem;
+                    max-width: 50%;
+                    
                     & > *{
                         margin-block: .5rem;
                     }
@@ -99,6 +103,7 @@
                     flex-grow: 1;
                     flex-basis: 0;
                     margin-top: 1rem;
+                    margin-left: 4rem;
                     @include flex(column, flex-end, flex-start);
                     p {
                         font-size: .875rem;
